@@ -1,28 +1,43 @@
+:root {
+    --content-max-width: 800px;
+    --page-margin-top: 40px;
+}
 /* 1. Variable Definitions */
 :root {
-    /* Light Mode Palette */
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --heading-color: #000000;
-    --accent-red: #a75959; 
-    --link-color: #0056b3;
-    --border-color: #333333;
-    --footer-text: #777777;
-    --button-hover: #f0f0f0;
+    --olive-leaf: #606c38ff;
+    --black-forest: #283618ff;
+    --cornsilk: #fefae0ff;
+    --sunlit-clay: #dda15eff;
+    --copperwood: #bc6c25ff;
+
+    --bg-color: var(--cornsilk);
+    --heading-color: var(--black-forest);
+    --text-color: var(--olive-leaf);
+    --accent-red: var(--sunlit-clay);
+    --link-color: var(--copperwood);
+    --border-color: var(--olive-leaf);
+    --footer-text: var(--olive-leaf);
+    --button-hover: var(--copperwood);
+
     color-scheme: light;
 }
 
 /* This class is triggered by the JavaScript Toggle */
 body.dark-mode {
-    /* Dark Mode Palette */
-    --bg-color: #121212;
-    --text-color: #d1d1d1;
-    --heading-color: #ffffff;
-    --accent-red: #5e2f2f; 
-    --link-color: #8ab4f8;
-    --border-color: #444444;
-    --footer-text: #888888;
-    --button-hover: #222222;
+    --space-indigo: #22223bff;
+    --dusty-grape: #4a4e69ff;
+    --lilac-ash: #9a8c98ff;
+    --almond-silk: #c9ada7ff;
+    --parchment: #f2e9e4ff;
+
+    --bg-color: var(--space-indigo);
+    --heading-color: var(--almond-silk);
+    --text-color: var(--parchment);
+    --link-color: var(--lilac-ash);
+    --border-color: var(--dusty-grape);
+    --footer-text: var(--dusty-grape);
+    --button-hover: var(--dusty-grape);
+
     color-scheme: dark;
 }
 
@@ -35,73 +50,87 @@ body {
     padding: 0 20px;
     color: var(--text-color);
     background-color: var(--bg-color);
-    /* Smooth transition for theme switching */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 header {
     border-bottom: 2px solid var(--border-color);
     margin-bottom: 20px;
     padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
-h1, h2 {
+.header-title h2 {
+    margin: 0 0 4px 0;
+}
+
+.header-title p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+}
+
+h1,
+h2 {
     color: var(--heading-color);
-    transition: color 0.3s ease;
 }
 
 a {
     color: var(--link-color);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-/* 3. Component Styles */
+
 .course-list {
     list-style-type: square;
 }
 
 .formula-box {
     background: var(--accent-red);
-    color: #ffffff; /* Contrast text */
+    color: #ffffff;
     padding: 20px;
     border-left: 5px solid var(--border-color);
     font-style: italic;
     margin: 20px 0;
-    transition: background-color 0.3s ease;
     border-radius: 0 4px 4px 0;
 }
 
-/* Ensure MathJax symbols remain readable in Dark Mode */
 .dark-mode .formula-box {
     border-left-color: #ffffff;
 }
 
 #theme-toggle {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    z-index: 9999;
     cursor: pointer;
-    background-color: var(--bg-color);
+    background-color: transparent;
     color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 8px 10px;
-    border-radius: 6px;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
     font-family: inherit;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #theme-toggle:hover {
-    background-color: var(--button-hover);
+    color: var(--button-hover);
+}
+
+main {
+    margin-left: 0;
 }
 
 /* Footer Styling */
@@ -118,10 +147,18 @@ footer {
     body {
         margin: 20px auto;
     }
-    /* Keep the toggle in the top-right on small screens; reduce padding so it doesn't overwhelm */
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .header-controls {
+        align-self: flex-end;
+    }
+
     #theme-toggle {
-        top: 8px;
-        right: 8px;
         padding: 6px 8px;
         font-size: 1rem;
     }
