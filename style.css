@@ -1,3 +1,4 @@
+/* 1. Variable Definitions */
 :root {
     /* Light Mode Palette */
     --bg-color: #ffffff;
@@ -8,6 +9,7 @@
     --border-color: #333333;
     --footer-text: #777777;
     --button-hover: #f0f0f0;
+    color-scheme: light;
 }
 
 /* This class is triggered by the JavaScript Toggle */
@@ -21,9 +23,10 @@ body.dark-mode {
     --border-color: #444444;
     --footer-text: #888888;
     --button-hover: #222222;
+    color-scheme: dark;
 }
 
-/* Base Styles */
+/* 2. Base Styles */
 body {
     font-family: "Charter", "Bitstream Charter", "Sitka Text", Cambria, serif;
     line-height: 1.6;
@@ -40,7 +43,6 @@ header {
     border-bottom: 2px solid var(--border-color);
     margin-bottom: 20px;
     padding-bottom: 10px;
-    position: relative;
 }
 
 h1, h2 {
@@ -58,20 +60,25 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Course List Styling */
+/* 3. Component Styles */
 .course-list {
     list-style-type: square;
 }
 
-/* Formula Box (Euler's Identity / Math section) */
 .formula-box {
     background: var(--accent-red);
-    color: #ffffff; /* Keep math text white for contrast */
-    padding: 15px;
+    color: #ffffff; /* Contrast text */
+    padding: 20px;
     border-left: 5px solid var(--border-color);
     font-style: italic;
     margin: 20px 0;
     transition: background-color 0.3s ease;
+    border-radius: 0 4px 4px 0;
+}
+
+/* Ensure MathJax symbols remain readable in Dark Mode */
+.dark-mode .formula-box {
+    border-left-color: #ffffff;
 }
 
 /* Theme Toggle Button */
@@ -99,10 +106,9 @@ footer {
     border-top: 1px solid var(--border-color);
     font-size: 0.8em;
     color: var(--footer-text);
-    transition: color 0.3s ease;
 }
 
-/* Responsive adjustment for small screens */
+/* 4. Responsive adjustments */
 @media (max-width: 600px) {
     body {
         margin: 20px auto;
@@ -110,124 +116,8 @@ footer {
     #theme-toggle {
         float: none;
         display: block;
-        margin-bottom: 15px;
-    }
-}/* Karan's Homepage Stylesheet
-    CMI - B.Sc. Mathematics 
-*/
-
-:root {
-    /* Light Mode Palette */
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --heading-color: #000000;
-    --accent-red: #a75959; 
-    --link-color: #0056b3;
-    --border-color: #333333;
-    --footer-text: #777777;
-    --button-hover: #f0f0f0;
-}
-
-/* This class is triggered by the JavaScript Toggle */
-body.dark-mode {
-    /* Dark Mode Palette */
-    --bg-color: #121212;
-    --text-color: #d1d1d1;
-    --heading-color: #ffffff;
-    --accent-red: #5e2f2f; 
-    --link-color: #8ab4f8;
-    --border-color: #444444;
-    --footer-text: #888888;
-    --button-hover: #222222;
-}
-
-/* Base Styles */
-body {
-    font-family: "Charter", "Bitstream Charter", "Sitka Text", Cambria, serif;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    /* Smooth transition for theme switching */
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-header {
-    border-bottom: 2px solid var(--border-color);
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    position: relative;
-}
-
-h1, h2 {
-    color: var(--heading-color);
-    transition: color 0.3s ease;
-}
-
-a {
-    color: var(--link-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Course List Styling */
-.course-list {
-    list-style-type: square;
-}
-
-/* Formula Box (Euler's Identity / Math section) */
-.formula-box {
-    background: var(--accent-red);
-    color: #ffffff; /* Keep math text white for contrast */
-    padding: 15px;
-    border-left: 5px solid var(--border-color);
-    font-style: italic;
-    margin: 20px 0;
-    transition: background-color 0.3s ease;
-}
-
-/* Theme Toggle Button */
-#theme-toggle {
-    float: right;
-    cursor: pointer;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: 0.85em;
-    transition: all 0.3s ease;
-}
-
-#theme-toggle:hover {
-    background-color: var(--button-hover);
-}
-
-/* Footer Styling */
-footer {
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.8em;
-    color: var(--footer-text);
-    transition: color 0.3s ease;
-}
-
-/* Responsive adjustment for small screens */
-@media (max-width: 600px) {
-    body {
-        margin: 20px auto;
-    }
-    #theme-toggle {
-        float: none;
-        display: block;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: center;
     }
 }
