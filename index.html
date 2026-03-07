@@ -13,28 +13,33 @@
 </head>
 
 <body>
-
-    <button id="theme-toggle">Toggle Dark Mode</button>
+    <button id="theme-toggle" aria-pressed="false">Toggle Dark Mode</button>
 
     <script>
         const btn = document.getElementById("theme-toggle");
-        const currentTheme = localStorage.getItem("theme");
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Check for saved user preference
-        if (currentTheme === "dark") {
-            document.body.classList.add("dark-mode");
+        // Determine initial theme: saved preference, otherwise system preference
+        const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+        if (initialTheme === 'dark') {
+            document.body.classList.add('dark-mode');
         }
 
-        btn.addEventListener("click", function () {
-            // Toggle the class on the body
-            document.body.classList.toggle("dark-mode");
-            
-            // Save the preference to local storage
-            let theme = "light";
-            if (document.body.classList.contains("dark-mode")) {
-                theme = "dark";
-            }
-            localStorage.setItem("theme", theme);
+        // Update button accessible state and label
+        function updateToggleButton() {
+            const isDark = document.body.classList.contains('dark-mode');
+            btn.setAttribute('aria-pressed', isDark);
+            btn.textContent = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+        }
+
+        updateToggleButton();
+
+        btn.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateToggleButton();
         });
     </script>
 
@@ -44,22 +49,23 @@
         <p>karang.ug2024 [at] cmi [dot] ac [dot] in</p>
     </header>
 
-    <section>
-        <h2>About Me</h2>
-        <p>I am a mathematics student currently dabbling in Algrebraic Topology, Differential Geometry and Commutative Algebra.</p>
-        <p><a href="docs/CV.pdf">CV</a></p>
-    </section>
+    <main>
+        <section>
+            <h2>About Me</h2>
+            <p>I am a mathematics student currently dabbling in Algebraic Topology, Differential Geometry and Commutative Algebra.</p>
+            <p><a href="docs/CV.pdf">CV</a></p>
+        </section>
 
-    <section>
-        <h2>Current Coursework</h2>
-        <ul class="course-list">
-            <li>Algebra IV</li>
-            <li>Topology</li>
-            <li>Complex Analysis</li>
-            <li>Differential Equations</li>
-            <li>Programming Language Concepts</li>
-        </ul>
-    </section>
+        <section>
+            <h2>Current Coursework</h2>
+            <ul class="course-list">
+                <li>Algebra IV</li>
+                <li>Topology</li>
+                <li>Complex Analysis</li>
+                <li>Differential Equations</li>
+                <li>Programming Language Concepts</li>
+            </ul>
+        </section>
 
     <!-- <section>
         <h2>Favorite Theorem</h2>
@@ -69,12 +75,17 @@
         </div>
     </section> -->
 
-    <section>
-        <h2>Notes</h2>
-        <ul>
-            <li><a href="docs/alg4_notes.pdf">Algebra IV Notes</a></li>
-            <li><a href="docs/cana_notes.pdf">Complex Analysis Notes</a></li>
-        </ul>
-    </section>
+        <section>
+            <h2>Notes</h2>
+            <ul>
+                <li><a href="docs/alg4_notes.pdf">Algebra IV Notes</a></li>
+                <li><a href="docs/cana_notes.pdf">Complex Analysis Notes</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Last updated: March 2026</p>
+    </footer>
 </body>
 </html>
