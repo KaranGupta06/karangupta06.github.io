@@ -7,13 +7,15 @@
     <title>Karan's Homepage</title>
 
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es20/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-    <button id="theme-toggle" aria-pressed="false">Toggle Dark Mode</button>
+    <button id="theme-toggle" aria-pressed="false" aria-label="Toggle theme">
+        <span class="material-icons" aria-hidden="true">dark_mode</span>
+    </button>
 
     <script>
         const btn = document.getElementById("theme-toggle");
@@ -26,11 +28,12 @@
             document.body.classList.add('dark-mode');
         }
 
-        // Update button accessible state and label
+        // Update button accessible state, label and icon
         function updateToggleButton() {
             const isDark = document.body.classList.contains('dark-mode');
             btn.setAttribute('aria-pressed', isDark);
-            btn.textContent = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+            btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+            btn.innerHTML = `<span class="material-icons" aria-hidden="true">${isDark ? 'light_mode' : 'dark_mode'}</span>`;
         }
 
         updateToggleButton();
@@ -46,13 +49,14 @@
     <header>
         <h1>Karan Gupta</h1>
         <p>B.Sc. Mathematics | 2nd Year Undergraduate | <a href="https://www.cmi.ac.in/">CMI</a></p>
-        <p>karang.ug2024 [at] cmi [dot] ac [dot] in</p>
+        <p>karang.ug2024 at cmi.ac.in</p>
     </header>
 
     <main>
         <section>
             <h2>About Me</h2>
-            <p>I am a mathematics student currently dabbling in Algebraic Topology, Differential Geometry and Commutative Algebra.</p>
+            <p>I am a mathematics student currently dabbling in Algebraic Topology, Differential Geometry and
+                Commutative Algebra.</p>
             <p><a href="docs/CV.pdf">CV</a></p>
         </section>
 
@@ -67,7 +71,7 @@
             </ul>
         </section>
 
-    <!-- <section>
+        <!-- <section>
         <h2>Favorite Theorem</h2>
         <p>One of the most elegant results I've encountered so far is Euler's Identity:</p>
         <div class="formula-box">
@@ -88,4 +92,5 @@
         <p>Last updated: March 2026</p>
     </footer>
 </body>
+
 </html>

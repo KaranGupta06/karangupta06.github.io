@@ -81,18 +81,23 @@ a:hover {
     border-left-color: #ffffff;
 }
 
-/* Theme Toggle Button */
 #theme-toggle {
-    float: right;
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 9999;
     cursor: pointer;
     background-color: var(--bg-color);
     color: var(--text-color);
     border: 1px solid var(--border-color);
-    padding: 6px 12px;
-    border-radius: 4px;
+    padding: 8px 10px;
+    border-radius: 6px;
     font-family: inherit;
-    font-size: 0.85em;
-    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #theme-toggle:hover {
@@ -113,11 +118,11 @@ footer {
     body {
         margin: 20px auto;
     }
+    /* Keep the toggle in the top-right on small screens; reduce padding so it doesn't overwhelm */
     #theme-toggle {
-        float: none;
-        display: block;
-        margin-bottom: 20px;
-        width: 100%;
-        text-align: center;
+        top: 8px;
+        right: 8px;
+        padding: 6px 8px;
+        font-size: 1rem;
     }
 }
