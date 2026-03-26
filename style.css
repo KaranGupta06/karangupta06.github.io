@@ -2,7 +2,7 @@
     --content-max-width: 800px;
     --page-margin-top: 40px;
 }
-/* 1. Variable Definitions */
+
 :root {
     --olive-leaf: #606c38ff;
     --black-forest: #283618ff;
@@ -22,21 +22,23 @@
     color-scheme: light;
 }
 
-/* This class is triggered by the JavaScript Toggle */
 body.dark-mode {
-    --space-indigo: #22223bff;
-    --dusty-grape: #4a4e69ff;
-    --lilac-ash: #9a8c98ff;
-    --almond-silk: #c9ada7ff;
-    --parchment: #f2e9e4ff;
+    --a: #d9a127;
+    --b: #a4a4a4;
+    --c: #777674;
+    --d: #4b4a48;
+    --e: #262625;
+    --f: #131313;
+    --black-forest: #283618ff;
 
-    --bg-color: var(--space-indigo);
-    --heading-color: var(--almond-silk);
-    --text-color: var(--parchment);
-    --link-color: var(--lilac-ash);
-    --border-color: var(--dusty-grape);
-    --footer-text: var(--dusty-grape);
-    --button-hover: var(--dusty-grape);
+
+    --bg-color: var(--f);
+    --heading-color: var(--b);
+    --text-color: var(--b);
+    --link-color: var(--a);
+    --border-color: var(--e);
+    --footer-text: var(--d);
+    --button-hover: var(--d);
 
     color-scheme: dark;
 }
