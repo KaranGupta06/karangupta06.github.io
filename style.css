@@ -105,11 +105,14 @@ a:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
 }
 
 #theme-toggle:hover {
     color: var(--button-hover);
+    transform: scale(1.2) rotate(45deg);
 }
+
 
 main {
     margin-left: 0;
